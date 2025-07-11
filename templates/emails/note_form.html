@@ -1,0 +1,10 @@
+<form method="post" action="{% url 'add_note' email.id %}">
+  {% csrf_token %}
+  <textarea name="content"></textarea>
+  <button type="submit">Add Note</button>
+</form>
+<ul>
+{% for note in email.notes.all %}
+  <li>{{ note.content }} ({{ note.created_at }})</li>
+{% endfor %}
+</ul>
